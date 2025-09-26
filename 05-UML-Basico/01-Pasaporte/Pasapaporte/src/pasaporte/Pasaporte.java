@@ -10,7 +10,7 @@ package pasaporte;
  */
 class Pasaporte {
     private String numero;
-    private String fechaEmision; // ahora es String
+    private String fechaEmision; 
     private Foto foto;           
     private Titular titular;     
 
