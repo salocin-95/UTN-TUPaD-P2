@@ -62,7 +62,7 @@ public class Inventario {
     
     }
     
-    public ArrayList<Producto> productosPorCategoria(CategoriaProducto categoria) {
+    public ArrayList<Producto> filtrarPorCategoria(CategoriaProducto categoria) {
         ArrayList<Producto> productosEncontrados = new ArrayList<>();
         
         for (Producto producto : productos) {
@@ -88,4 +88,53 @@ public class Inventario {
         }
     } 
     
+    public void obtenerTotalStock(String id) {
+        Producto producto = buscarProductoPorId(id); // 👈 reutilizás tu método existente
+
+        if (producto != null) {
+            System.out.println("El producto \"" + producto.getNombre() + 
+                               "\" tiene " + producto.getCantidad() + " unidades en stock.");
+        } else {
+            System.out.println("⚠️ No se encontró ningún producto con el ID: " + id);
+        }
+
+    }
+    
+    public Producto obtenerProductoConMayorStock() {
+        if (productos.isEmpty()) {
+            return null; // Si no hay productos, devolvemos null
+        }
+
+        Producto productoMayor = productos.get(0); // 👈 Empezamos con el primero
+
+        for (Producto producto : productos) {
+            if (producto.getCantidad() > productoMayor.getCantidad()) {
+                productoMayor = producto; // 👈 Guardamos el que tiene más stock
+            }
+        }
+
+        return productoMayor;
+    }
+    
+    public ArrayList<Producto> filtrarProductosPorPrecio(double min, double max) {
+        ArrayList<Producto> filtrados = new ArrayList<>();
+
+        for (Producto producto : productos) {
+            if (producto.getPrecio() >= min && producto.getPrecio() <= max) {
+                filtrados.add(producto);
+            }
+        }
+
+        return filtrados;
+    }
+    
+    public void mostrarCategoriasDisponibles() {
+        System.out.println("Categorías disponibles:");
+        for (CategoriaProducto categoria : CategoriaProducto.values()) {
+            System.out.println("- " + categoria);
+        }
+    }
+
+    
+
 }

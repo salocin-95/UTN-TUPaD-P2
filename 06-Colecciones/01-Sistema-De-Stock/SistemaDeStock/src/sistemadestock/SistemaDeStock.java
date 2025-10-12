@@ -21,26 +21,34 @@ public class SistemaDeStock {
         Producto jeans = new Producto("543", "jeans", 60000.0, 100, CategoriaProducto.ROPA);
         Producto arroz = new Producto("995", "arroz", 1500.0, 50, CategoriaProducto.ALIMENTOS);
         Producto silla = new Producto("125", "silla", 2400.0, 100, CategoriaProducto.HOGAR);
-
+        
+        // 1
         inventario.agregarProducto(mesa);
         inventario.agregarProducto(microondas);
         inventario.agregarProducto(jeans);
         inventario.agregarProducto(arroz);
         inventario.agregarProducto(silla);
-        
+        // 2
         inventario.listarProductos();
-        
+        // 3
         inventario.buscarProductoPorId("12");
         inventario.buscarProductoPorId("123");
-       
-        System.out.println(inventario.productosPorCategoria(CategoriaProducto.HOGAR)); 
-        
+        // 4
+        System.out.println(inventario.filtrarPorCategoria(CategoriaProducto.HOGAR)); 
+        // 5
         inventario.eliminarProducto("123");
-        
+        // 6
         inventario.actulizarStock("15", 0);
+        inventario.obtenerTotalStock("125");
         inventario.actulizarStock("125", 150);
-
-        
+        // 7
+        inventario.obtenerTotalStock("125");
+        // 8
+        System.out.println("Producto con mayor stock: " + inventario.obtenerProductoConMayorStock());
+        // 9
+        System.out.println(inventario.filtrarProductosPorPrecio(1000, 3000));
+        // 10
+        inventario.mostrarCategoriasDisponibles();
     }
     
 }
